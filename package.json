@@ -1,0 +1,185 @@
+{
+	"name": "ovsx-tree-maker",
+	"displayName": "Tree Maker",
+	"description": "Generate tree structure of folders and files for your project.",
+	"version": "1.0.0",
+	"icon": "icon.png",
+	"license": "MIT",
+	"publisher": "imgildev",
+	"author": "ManuelGil",
+	"sponsor": {
+		"url": "https://github.com/sponsors/ManuelGil"
+	},
+	"engines": {
+		"vscode": "^1.76.0"
+	},
+	"categories": [
+		"Other"
+	],
+	"keywords": [
+		"tree-maker",
+		"tree",
+		"export",
+		"vscode"
+	],
+	"homepage": "https://github.com/ManuelGil/ovsx-tree-maker",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/ManuelGil/ovsx-tree-maker.git"
+	},
+	"bugs": {
+		"url": "https://github.com/ManuelGil/ovsx-tree-maker/issues"
+	},
+	"activationEvents": [],
+	"main": "./out/extension.js",
+	"l10n": "./l10n",
+	"contributes": {
+		"configuration": {
+			"title": "Tree Maker",
+			"properties": {
+				"treeMaker.files.selectedOutputFormat": {
+					"type": "string",
+					"default": "markdown",
+					"enum": [
+						"markdown",
+						"json",
+						"xml",
+						"yaml",
+						"csv",
+						"txt"
+					],
+					"enumDescriptions": [
+						"Markdown",
+						"JSON",
+						"XML",
+						"YAML",
+						"CSV",
+						"Text"
+					],
+					"scope": "resource",
+					"description": "%treeMaker.files.selectedOutputFormat.description%"
+				},
+				"treeMaker.files.outputFolder": {
+					"type": "string",
+					"default": "tree-maker",
+					"scope": "resource",
+					"description": "%treeMaker.files.outputFolder.description%"
+				},
+				"treeMaker.files.outputFileName": {
+					"type": "string",
+					"default": "tree",
+					"scope": "resource",
+					"description": "%treeMaker.files.outputFileName.description%"
+				},
+				"treeMaker.files.outputFilePrefix": {
+					"type": "string",
+					"default": "",
+					"scope": "resource",
+					"description": "%treeMaker.files.outputFilePrefix.description%"
+				},
+				"treeMaker.files.outputFileSuffix": {
+					"type": "string",
+					"default": "",
+					"scope": "resource",
+					"description": "%treeMaker.files.outputFileSuffix.description%"
+				},
+				"treeMaker.files.outputFileSeparator": {
+					"type": "string",
+					"default": "-",
+					"scope": "resource",
+					"description": "%treeMaker.files.outputFileSeparator.description%"
+				},
+				"treeMaker.search.ignoreFilePathPatternOnExport": {
+					"type": "array",
+					"default": [
+						"**/build/**",
+						"**/dist/**",
+						"**/tmp/**",
+						"**/vendor/**",
+						"**/tree-maker/**"
+					],
+					"scope": "resource",
+					"description": "%treeMaker.search.ignoreFilePathPatternOnExport.description%"
+				},
+				"treeMaker.search.shouldListOnlyFiles": {
+					"type": "boolean",
+					"default": false,
+					"scope": "resource",
+					"description": "%treeMaker.search.shouldListOnlyFiles.description%"
+				},
+				"treeMaker.search.maxSearchRecursionDepth": {
+					"type": "number",
+					"default": 3,
+					"scope": "resource",
+					"description": "%treeMaker.search.maxSearchRecursionDepth.description%"
+				},
+				"treeMaker.search.shouldListOnlyVisibleFiles": {
+					"type": "boolean",
+					"default": false,
+					"scope": "resource",
+					"description": "%treeMaker.search.shouldListOnlyVisibleFiles.description%"
+				},
+				"treeMaker.search.keepGitignorePreferences": {
+					"type": "boolean",
+					"default": true,
+					"scope": "resource",
+					"description": "%treeMaker.search.keepGitignorePreferences.description%"
+				}
+			}
+		},
+		"commands": [
+			{
+				"command": "treeMaker.generateFolderTree",
+				"title": "%treeMaker.generateFolderTree.title%",
+				"category": "Tree Maker"
+			}
+		],
+		"menus": {
+			"explorer/context": [
+				{
+					"command": "treeMaker.generateFolderTree",
+					"when": "explorerViewletFocus && explorerResourceIsFolder"
+				}
+			]
+		},
+		"jsonValidation": [
+			{
+				"fileMatch": ".vscode/settings.json",
+				"url": "./schemas/config.schema.json"
+			}
+		]
+	},
+	"scripts": {
+		"vscode:prepublish": "npm run compile",
+		"compile": "rimraf out && tsc -p ./",
+		"watch": "tsc -watch -p ./",
+		"pretest": "npm run compile && npm run lint",
+		"format": "biome format --write",
+		"lint": "biome lint --write",
+		"lint:check": "biome check --write",
+		"test": "node ./out/test/runTest.js",
+		"compodoc": "npx compodoc -p tsconfig.doc.json -d compodoc --theme readthedocs -s",
+		"prepare": "husky"
+	},
+	"devDependencies": {
+		"@biomejs/biome": "1.9.4",
+		"@commitlint/cli": "^19.6.0",
+		"@commitlint/config-conventional": "^19.6.0",
+		"@compodoc/compodoc": "^1.1.26",
+		"@types/mocha": "^10.0.10",
+		"@types/node": "^22.10.0",
+		"@types/vscode": "^1.76.0",
+		"@vscode/l10n-dev": "^0.0.35",
+		"globals": "^15.12.0",
+		"husky": "^9.1.7",
+		"lint-staged": "^15.2.10",
+		"mocha": "^10.8.2",
+		"rimraf": "^6.0.1",
+		"typescript": "^5.7.2",
+		"vscode-test": "^1.6.1"
+	},
+	"dependencies": {
+		"fast-glob": "^3.3.2",
+		"ignore": "^6.0.2"
+	}
+}

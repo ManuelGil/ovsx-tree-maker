@@ -1,0 +1,14 @@
+{
+	"treeMaker.files.selectedOutputFormat.description": "El formato de salida para los archivos del creador de árboles.",
+	"treeMaker.files.outputFolder.description": "La carpeta de salida para los archivos del creador de árboles.",
+	"treeMaker.files.outputFileName.description": "El nombre de archivo de salida para los archivos del creador de árboles.",
+	"treeMaker.files.outputFilePrefix.description": "El prefijo de archivo de salida para los archivos del creador de árboles.",
+	"treeMaker.files.outputFileSuffix.description": "El sufijo de archivo de salida para los archivos del creador de árboles.",
+	"treeMaker.files.outputFileSeparator.description": "El separador de archivo de salida para los archivos del creador de árboles.",
+	"treeMaker.search.ignoreFilePathPatternOnExport.description": "Los patrones de ruta de archivo a ignorar en la exportación.",
+	"treeMaker.search.shouldListOnlyFiles.description": "Debería listar solo archivos.",
+	"treeMaker.search.maxSearchRecursionDepth.description": "La profundidad máxima de recursión de búsqueda.",
+	"treeMaker.search.shouldListOnlyVisibleFiles.description": "Debería listar solo archivos visibles.",
+	"treeMaker.search.keepGitignorePreferences.description": "Mantener las preferencias de gitignore.",
+	"treeMaker.generateFolderTree.title": "Generar árbol de carpetas"
+}
