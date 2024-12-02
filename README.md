@@ -1,5 +1,8 @@
 # Tree Maker
 
+[![Open VSX Version](https://img.shields.io/open-vsx/v/imgildev/ovsx-tree-maker?style=for-the-badge)](https://open-vsx.org/extension/imgildev/ovsx-tree-maker)
+[![Open VSX Downloads](https://img.shields.io/open-vsx/dt/imgildev/ovsx-tree-maker?style=for-the-badge)](https://open-vsx.org/extension/imgildev/ovsx-tree-maker)
+[![Open VSX Rating](https://img.shields.io/open-vsx/rating/imgildev/ovsx-tree-maker?style=for-the-badge)](https://open-vsx.org/extension/imgildev/ovsx-tree-maker/reviews)
 [![GitHub Repo stars](https://img.shields.io/github/stars/ManuelGil/ovsx-tree-maker?style=for-the-badge&logo=github)](https://github.com/ManuelGil/ovsx-tree-maker)
 [![GitHub license](https://img.shields.io/github/license/ManuelGil/ovsx-tree-maker?style=for-the-badge&logo=github)](https://github.com/ManuelGil/ovsx-tree-maker/blob/main/LICENSE)
 
