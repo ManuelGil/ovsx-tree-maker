@@ -10,7 +10,7 @@ import {
 } from 'fs';
 import ignore from 'ignore';
 import { basename, dirname, join, relative, resolve, sep } from 'path';
-import { Uri, commands, l10n, window, workspace } from 'vscode';
+import { Uri, commands, env, l10n, window, workspace } from 'vscode';
 
 import { ExtensionConfig } from '../configs';
 
@@ -47,19 +47,19 @@ export class FilesController {
   // Public methods
 
   /**
-   * The generateFolderTree method.
+   * The exportToFile method.
    * Generate a file tree in the selected folder.
-   * @function generateFolderTree
+   * @function exportToFile
    * @param {Uri} folderPath - The folder path
    * @public
    * @async
    * @memberof FilesController
    * @example
-   * controller.generateFolderTree(folderPath);
+   * controller.exportToFile(folderPath);
    *
    * @returns {Promise<void>} - The promise with no return value
    */
-  async generateFolderTree(folderPath?: Uri): Promise<void> {
+  async exportToFile(folderPath?: Uri): Promise<void> {
     // If the folder is not valid, return
     if (!folderPath) {
       const message = l10n.t('The folder is not valid!');
@@ -327,6 +327,184 @@ export class FilesController {
     }
   }
 
+  /**
+   * The exportToClipboard method.
+   * Generate a file tree in the selected folder and copy it to the clipboard.
+   * @function exportToClipboard
+   * @param {Uri} folderPath - The folder path
+   * @public
+   * @async
+   * @memberof FilesController
+   * @example
+   * controller.exportToClipboard(folderPath);
+   *
+   * @returns {Promise<void>} - The promise with no return value
+   */
+  async exportToClipboard(folderPath?: Uri): Promise<void> {
+    // If the folder is not valid, return
+    if (!folderPath) {
+      const message = l10n.t('The folder is not valid!');
+      window.showErrorMessage(message);
+      return;
+    }
+
+    const workspaceFolder = workspace.getWorkspaceFolder(folderPath);
+
+    // If the folder is not in the workspace, return
+    if (!workspaceFolder) {
+      const message = l10n.t('The folder is not in the workspace!');
+      window.showErrorMessage(message);
+      return;
+    }
+
+    const selectedOutputFormat = this.config.selectedOutputFormat;
+
+    switch (selectedOutputFormat) {
+      case 'markdown': {
+        const content = await this.generateFileTreeMarkdown(folderPath.fsPath);
+
+        if (content) {
+          // Copy the content to the clipboard
+          await env.clipboard.writeText('```markdown\n' + content + '\n```');
+
+          // Show the content in a new document
+          const document = await workspace.openTextDocument({
+            language: 'markdown',
+            content: '```markdown\n' + content + '\n```',
+          });
+
+          // Show the document
+          await window.showTextDocument(document);
+
+          // Show the information message
+          const message = l10n.t('File tree copied to the clipboard!');
+          window.showInformationMessage(message);
+        }
+        break;
+      }
+
+      case 'json': {
+        const content = await this.generateFileTreeJson(folderPath.fsPath);
+
+        if (content) {
+          // Copy the content to the clipboard
+          await env.clipboard.writeText(JSON.stringify(content, null, 2));
+
+          // Show the content in a new document
+          const document = await workspace.openTextDocument({
+            language: 'json',
+            content: JSON.stringify(content, null, 2),
+          });
+
+          // Show the document
+          await window.showTextDocument(document);
+
+          // Show the information message
+          const message = l10n.t('File tree copied to the clipboard!');
+          window.showInformationMessage(message);
+        }
+        break;
+      }
+
+      case 'xml': {
+        const content = await this.generateFileTreeXml(folderPath.fsPath);
+
+        if (content) {
+          // Copy the content to the clipboard
+          await env.clipboard.writeText(content);
+
+          // Show the content in a new document
+          const document = await workspace.openTextDocument({
+            language: 'xml',
+            content: content,
+          });
+
+          // Show the document
+          await window.showTextDocument(document);
+
+          // Show the information message
+          const message = l10n.t('File tree copied to the clipboard!');
+          window.showInformationMessage(message);
+        }
+        break;
+      }
+
+      case 'yaml': {
+        const content = await this.generateFileTreeYaml(folderPath.fsPath);
+
+        if (content) {
+          // Copy the content to the clipboard
+          await env.clipboard.writeText(content);
+
+          // Show the content in a new document
+          const document = await workspace.openTextDocument({
+            language: 'yaml',
+            content: content,
+          });
+
+          // Show the document
+          await window.showTextDocument(document);
+
+          // Show the information message
+          const message = l10n.t('File tree copied to the clipboard!');
+          window.showInformationMessage(message);
+        }
+        break;
+      }
+
+      case 'csv': {
+        const content = await this.generateFileTreeCsv(folderPath.fsPath);
+
+        if (content) {
+          // Copy the content to the clipboard
+          await env.clipboard.writeText(content);
+
+          // Show the content in a new document
+          const document = await workspace.openTextDocument({
+            language: 'csv',
+            content: content,
+          });
+
+          // Show the document
+          await window.showTextDocument(document);
+
+          // Show the information message
+          const message = l10n.t('File tree copied to the clipboard!');
+          window.showInformationMessage(message);
+        }
+        break;
+      }
+
+      case 'txt': {
+        const content = await this.generateFileTreeTxt(folderPath.fsPath);
+
+        if (content) {
+          // Copy the content to the clipboard
+          await env.clipboard.writeText(content);
+
+          // Show the content in a new document
+          const document = await workspace.openTextDocument({
+            language: 'plaintext',
+            content: content,
+          });
+
+          // Show the document
+          await window.showTextDocument(document);
+
+          // Show the information message
+          const message = l10n.t('File tree copied to the clipboard!');
+          window.showInformationMessage(message);
+        }
+        break;
+      }
+
+      default:
+        const message = l10n.t('The output format is not supported!');
+        window.showErrorMessage(message);
+        break;
+    }
+  }
+
   // Private methods
 
   /**
@@ -373,21 +551,28 @@ export class FilesController {
 
     let content = '';
 
-    for (const item of files) {
-      const fullPath = resolve(item.fsPath);
+    for (const [index, fileEntry] of files.entries()) {
+      const fullPath = resolve(fileEntry.fsPath);
       const isFolder = statSync(fullPath).isDirectory();
+      const isLastItem = index === files.length - 1;
 
       const currentDepth =
         fullPath.split(sep).length - folderPath.split(sep).length;
 
       if (isFolder) {
-        content += `${'  '.repeat(currentDepth)}- 📂 ${basename(
-          item.fsPath
+        content += `${'  '.repeat(currentDepth)}└ 📂 ${basename(
+          fileEntry.fsPath
         )}\n`;
       } else {
-        content += `${'  '.repeat(currentDepth)}- 📄 ${basename(
-          item.fsPath
-        )}\n`;
+        if (isLastItem) {
+          content += `${'  '.repeat(currentDepth)}└ 📄 ${basename(
+            fileEntry.fsPath
+          )}\n`;
+        } else {
+          content += `${'  '.repeat(currentDepth)}├ 📄 ${basename(
+            fileEntry.fsPath
+          )}\n`;
+        }
       }
     }
 

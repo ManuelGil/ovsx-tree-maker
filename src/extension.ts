@@ -88,12 +88,19 @@ export async function activate(context: vscode.ExtensionContext) {
   // Create a new FilesController
   const filesController = new FilesController(config);
 
-  const registerGenerateFolderTreeCommand = vscode.commands.registerCommand(
-    `${EXTENSION_ID}.generateFolderTree`,
-    (args) => filesController.generateFolderTree(args)
+  const registerExportToFileCommand = vscode.commands.registerCommand(
+    `${EXTENSION_ID}.exportToFile`,
+    (args) => filesController.exportToFile(args)
+  );
+  const registerExportToClipboardCommand = vscode.commands.registerCommand(
+    `${EXTENSION_ID}.exportToClipboard`,
+    (args) => filesController.exportToClipboard(args)
   );
 
-  context.subscriptions.push(registerGenerateFolderTreeCommand);
+  context.subscriptions.push(
+    registerExportToFileCommand,
+    registerExportToClipboardCommand
+  );
 }
 
 // this method is called when your extension is deactivated

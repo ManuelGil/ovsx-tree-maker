@@ -60,7 +60,7 @@
 		},
 		"treeMaker.search.maxSearchRecursionDepth": {
 			"type": "number",
-			"default": 3,
+			"default": 5,
 			"scope": "resource",
 			"description": "The maximum search recursion depth."
 		},

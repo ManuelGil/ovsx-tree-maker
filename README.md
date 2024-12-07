@@ -12,6 +12,8 @@ Tree Maker is designed to help developers streamline their workflow and improve 
 
 Get started with Tree Maker today and take your project organization to the next level!
 
+![Tree Maker](https://raw.githubusercontent.com/ManuelGil/ovsx-tree-maker/main/images/tree-maker.gif)
+
 ## Table of Contents
 
 - [Tree Maker](#tree-maker)
@@ -62,7 +64,7 @@ Configure your project by creating or updating a settings.json file at the proje
       "treeMaker.files.outputFileSeparator": "_", // Output file separator
       "treeMaker.search.ignoreFilePathPatternOnExport": ["**/dist/**", "**/tree-maker/**"], // Ignore file path patterns
       "treeMaker.search.shouldListOnlyFiles": false, // List only files
-      "treeMaker.search.maxSearchRecursionDepth": 3, // Maximum search recursion depth
+      "treeMaker.search.maxSearchRecursionDepth": 5, // Maximum search recursion depth
       "treeMaker.search.shouldListOnlyVisibleFiles": true, // List only visible files
       "treeMaker.search.keepGitignorePreferences": false, // Keep .gitignore preferences
     }

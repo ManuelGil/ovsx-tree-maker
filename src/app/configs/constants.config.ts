@@ -160,7 +160,7 @@ export const DISABLE_RECURSIVE_SEARCHING_DEFAULT_VALUE: boolean = false;
  *
  * @returns {number} - The default recursion depth
  */
-export const DEFAULT_RECURSION_DEPTH: number = 3;
+export const DEFAULT_RECURSION_DEPTH: number = 5;
 
 /**
  * DEFAULT_VISIBLE_FILES_SETTING: The default value of the flag to show hidden files.

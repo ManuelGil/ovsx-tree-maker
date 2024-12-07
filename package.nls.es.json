@@ -10,5 +10,6 @@
 	"treeMaker.search.maxSearchRecursionDepth.description": "La profundidad máxima de recursión de búsqueda.",
 	"treeMaker.search.shouldListOnlyVisibleFiles.description": "Debería listar solo archivos visibles.",
 	"treeMaker.search.keepGitignorePreferences.description": "Mantener las preferencias de gitignore.",
-	"treeMaker.generateFolderTree.title": "Generar árbol de carpetas"
+	"treeMaker.exportToFile.title": "Exportar árbol de carpetas a archivo",
+	"treeMaker.exportToClipboard.title": "Exportar árbol de carpetas al portapapeles"
 }

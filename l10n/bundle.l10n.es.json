@@ -12,5 +12,6 @@
 	"The file has not been created!": "¡El archivo no se ha creado!",
 	"File created successfully!": "¡Archivo creado con éxito!",
 	"The file name already exists!": "¡El nombre del archivo ya existe!",
-	"Error while finding files: {0}": "Error al encontrar archivos: {0}"
+	"Error while finding files: {0}": "Error al encontrar archivos: {0}",
+	"File tree copied to the clipboard!": "¡Árbol de archivos copiado al portapapeles!"
 }

@@ -2,7 +2,7 @@
 	"name": "ovsx-tree-maker",
 	"displayName": "Tree Maker",
 	"description": "Generate tree structure of folders and files for your project.",
-	"version": "1.0.0",
+	"version": "1.1.0",
 	"icon": "icon.png",
 	"license": "MIT",
 	"publisher": "imgildev",
@@ -109,7 +109,7 @@
 				},
 				"treeMaker.search.maxSearchRecursionDepth": {
 					"type": "number",
-					"default": 3,
+					"default": 5,
 					"scope": "resource",
 					"description": "%treeMaker.search.maxSearchRecursionDepth.description%"
 				},
@@ -129,16 +129,35 @@
 		},
 		"commands": [
 			{
-				"command": "treeMaker.generateFolderTree",
-				"title": "%treeMaker.generateFolderTree.title%",
+				"command": "treeMaker.exportToFile",
+				"title": "%treeMaker.exportToFile.title%",
 				"category": "Tree Maker"
+			},
+			{
+				"command": "treeMaker.exportToClipboard",
+				"title": "%treeMaker.exportToClipboard.title%",
+				"category": "Tree Maker"
+			}
+		],
+		"submenus": [
+			{
+				"id": "treeMaker.folder.submenu",
+				"label": "Tree Maker"
 			}
 		],
 		"menus": {
 			"explorer/context": [
 				{
-					"command": "treeMaker.generateFolderTree",
+					"submenu": "treeMaker.folder.submenu",
 					"when": "explorerViewletFocus && explorerResourceIsFolder"
+				}
+			],
+			"treeMaker.folder.submenu": [
+				{
+					"command": "treeMaker.exportToFile"
+				},
+				{
+					"command": "treeMaker.exportToClipboard"
 				}
 			]
 		},
