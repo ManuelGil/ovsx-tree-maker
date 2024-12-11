@@ -1,4 +1,3 @@
-import * as fastGlob from 'fast-glob';
 import {
   access,
   existsSync,
@@ -8,8 +7,9 @@ import {
   statSync,
   writeFile,
 } from 'fs';
-import ignore from 'ignore';
 import { basename, dirname, join, relative, resolve, sep } from 'path';
+import * as fastGlob from 'fast-glob';
+import ignore from 'ignore';
 import { Uri, commands, env, l10n, window, workspace } from 'vscode';
 
 import { ExtensionConfig } from '../configs';
@@ -120,7 +120,7 @@ export class FilesController {
           await this.saveFile(
             filePath,
             filename,
-            '```markdown\n' + content + '\n```'
+            `\`\`\`\`markdown${content}\`\`\``,
           );
         }
         break;
@@ -162,7 +162,7 @@ export class FilesController {
           await this.saveFile(
             filePath,
             filename,
-            JSON.stringify(content, null, 2)
+            JSON.stringify(content, null, 2),
           );
         }
         break;
@@ -365,12 +365,12 @@ export class FilesController {
 
         if (content) {
           // Copy the content to the clipboard
-          await env.clipboard.writeText('```markdown\n' + content + '\n```');
+          await env.clipboard.writeText(`\`\`\`\`markdown${content}\`\`\``);
 
           // Show the content in a new document
           const document = await workspace.openTextDocument({
             language: 'markdown',
-            content: '```markdown\n' + content + '\n```',
+            content: `\`\`\`\`markdown${content}\`\`\``,
           });
 
           // Show the document
@@ -521,7 +521,7 @@ export class FilesController {
    * @returns {Promise<string | undefined>} - The promise with the content
    */
   private async generateFileTreeMarkdown(
-    folderPath: string
+    folderPath: string,
   ): Promise<string | undefined> {
     // Get the configuration values
     const ignoreFilePathPatternOnExport =
@@ -540,7 +540,7 @@ export class FilesController {
       disableRecursiveSearching,
       recursionDepth,
       supportsHiddenFiles,
-      preserveGitignoreSettings
+      preserveGitignoreSettings,
     );
 
     if (files.length === 0) {
@@ -549,7 +549,7 @@ export class FilesController {
       return;
     }
 
-    let content = '';
+    let content = `\n. 📂 ${basename(folderPath)}\n`;
 
     for (const [index, fileEntry] of files.entries()) {
       const fullPath = resolve(fileEntry.fsPath);
@@ -559,21 +559,13 @@ export class FilesController {
       const currentDepth =
         fullPath.split(sep).length - folderPath.split(sep).length;
 
-      if (isFolder) {
-        content += `${'  '.repeat(currentDepth)}└ 📂 ${basename(
-          fileEntry.fsPath
-        )}\n`;
-      } else {
-        if (isLastItem) {
-          content += `${'  '.repeat(currentDepth)}└ 📄 ${basename(
-            fileEntry.fsPath
-          )}\n`;
-        } else {
-          content += `${'  '.repeat(currentDepth)}├ 📄 ${basename(
-            fileEntry.fsPath
-          )}\n`;
-        }
-      }
+      const prefix =
+        currentDepth === 1 ? '' : `│${'  '.repeat(currentDepth - 1)}`;
+      const icon = isFolder ? '📂' : '📄';
+      const branch =
+        isLastItem && !isFolder ? '└──' : isLastItem ? '└──' : '├──';
+
+      content += `${prefix}${branch} ${icon} ${basename(fileEntry.fsPath)}\n`;
     }
 
     return content;
@@ -593,7 +585,7 @@ export class FilesController {
    * @returns {Promise<string | undefined>} - The promise with the JSON content
    */
   private async generateFileTreeJson(
-    folderPath: string
+    folderPath: string,
   ): Promise<string | undefined> {
     // Get the configuration values
     const ignoreFilePathPatternOnExport =
@@ -612,7 +604,7 @@ export class FilesController {
       disableRecursiveSearching,
       recursionDepth,
       supportsHiddenFiles,
-      preserveGitignoreSettings
+      preserveGitignoreSettings,
     );
 
     // If no files are found, return
@@ -663,7 +655,7 @@ export class FilesController {
    * @returns {Promise<string | undefined>} - The promise with the XML content
    */
   private async generateFileTreeXml(
-    folderPath: string
+    folderPath: string,
   ): Promise<string | undefined> {
     // Get the configuration values
     const ignoreFilePathPatternOnExport =
@@ -682,7 +674,7 @@ export class FilesController {
       disableRecursiveSearching,
       recursionDepth,
       supportsHiddenFiles,
-      preserveGitignoreSettings
+      preserveGitignoreSettings,
     );
 
     // If no files are found, return
@@ -725,7 +717,7 @@ export class FilesController {
    * @returns {Promise<string | undefined>} - The promise with the YAML content
    */
   private async generateFileTreeYaml(
-    folderPath: string
+    folderPath: string,
   ): Promise<string | undefined> {
     // Get the configuration values
     const ignoreFilePathPatternOnExport =
@@ -744,7 +736,7 @@ export class FilesController {
       disableRecursiveSearching,
       recursionDepth,
       supportsHiddenFiles,
-      preserveGitignoreSettings
+      preserveGitignoreSettings,
     );
 
     // If no files are found, return
@@ -784,7 +776,7 @@ export class FilesController {
    * @returns {Promise<string | undefined>} - The promise with the CSV content
    */
   private async generateFileTreeCsv(
-    folderPath: string
+    folderPath: string,
   ): Promise<string | undefined> {
     // Get the configuration values
     const ignoreFilePathPatternOnExport =
@@ -803,7 +795,7 @@ export class FilesController {
       disableRecursiveSearching,
       recursionDepth,
       supportsHiddenFiles,
-      preserveGitignoreSettings
+      preserveGitignoreSettings,
     );
 
     // If no files are found, return
@@ -843,7 +835,7 @@ export class FilesController {
    * @returns {Promise<string | undefined>} - The promise with the TXT content
    */
   private async generateFileTreeTxt(
-    folderPath: string
+    folderPath: string,
   ): Promise<string | undefined> {
     // Get the configuration values
     const ignoreFilePathPatternOnExport =
@@ -862,7 +854,7 @@ export class FilesController {
       disableRecursiveSearching,
       recursionDepth,
       supportsHiddenFiles,
-      preserveGitignoreSettings
+      preserveGitignoreSettings,
     );
 
     // If no files are found, return
@@ -906,7 +898,7 @@ export class FilesController {
   private async saveFile(
     path: string,
     filename: string,
-    data: string
+    data: string,
   ): Promise<void> {
     const file = join(path, filename);
 
@@ -971,7 +963,7 @@ export class FilesController {
     disableRecursive: boolean = false,
     deep: number = 5,
     includeDotfiles: boolean = false,
-    enableGitignoreDetection: boolean = false
+    enableGitignoreDetection: boolean = false,
   ): Promise<Uri[]> {
     // If we need to respect .gitignore, we need to load it
     let gitignore;
