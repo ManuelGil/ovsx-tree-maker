@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.1.2] - 2021-12-17
+
+### Fixed
+
+- Fix issue with `FilesController` not exporting the correct markdown format.
+
 ## [1.1.1] - 2021-12-10
 
 ### Changed
@@ -33,7 +39,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Initial release of Tree Maker extension.
 
-[Unreleased]: https://github.com/ManuelGil/ovsx-tree-maker/compare/v1.1.1...HEAD
+[Unreleased]: https://github.com/ManuelGil/ovsx-tree-maker/compare/v1.1.2...HEAD
+[1.1.2]: https://github.com/ManuelGil/ovsx-tree-maker/compare/v1.1.1...v1.1.2
 [1.1.1]: https://github.com/ManuelGil/ovsx-tree-maker/compare/v1.1.0...v1.1.1
 [1.1.0]: https://github.com/ManuelGil/ovsx-tree-maker/compare/v1.0.1...v1.1.0
 [1.0.1]: https://github.com/ManuelGil/ovsx-tree-maker/releases/tag/v1.0.1...v1.0.0

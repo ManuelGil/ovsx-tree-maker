@@ -120,7 +120,7 @@ export class FilesController {
           await this.saveFile(
             filePath,
             filename,
-            `\`\`\`\`markdown${content}\`\`\``,
+            `\`\`\`markdown${content}\`\`\``,
           );
         }
         break;
@@ -365,12 +365,12 @@ export class FilesController {
 
         if (content) {
           // Copy the content to the clipboard
-          await env.clipboard.writeText(`\`\`\`\`markdown${content}\`\`\``);
+          await env.clipboard.writeText(`\`\`\`markdown${content}\`\`\``);
 
           // Show the content in a new document
           const document = await workspace.openTextDocument({
             language: 'markdown',
-            content: `\`\`\`\`markdown${content}\`\`\``,
+            content: `\`\`\`markdown${content}\`\`\``,
           });
 
           // Show the document
@@ -562,10 +562,10 @@ export class FilesController {
       const prefix =
         currentDepth === 1 ? '' : `│${'  '.repeat(currentDepth - 1)}`;
       const icon = isFolder ? '📂' : '📄';
-      const branch =
-        isLastItem && !isFolder ? '└──' : isLastItem ? '└──' : '├──';
+      const branch = isFolder ? '└──' : isLastItem ? '└──' : '├──';
+      const subfix = isFolder ? '/' : '';
 
-      content += `${prefix}${branch} ${icon} ${basename(fileEntry.fsPath)}\n`;
+      content += `${prefix}${branch} ${icon} ${basename(fullPath)}${subfix}\n`;
     }
 
     return content;
