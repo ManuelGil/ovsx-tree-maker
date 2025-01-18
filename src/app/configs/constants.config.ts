@@ -37,6 +37,18 @@ export const EXTENSION_NAME: string = 'ovsx-tree-maker';
 export const EXTENSION_DISPLAY_NAME: string = 'Tree Maker';
 
 /**
+ * USER_PUBLISHER: The publisher of the extension.
+ * @type {string}
+ * @public
+ * @memberof Constants
+ * @example
+ * console.log(USER_PUBLISHER);
+ *
+ * @returns {string} - The publisher of the extension
+ */
+export const USER_PUBLISHER: string = 'imgildev';
+
+/**
  * DEFAULT_OUTPUT_FORMAT: The default output format.
  * @type {string}
  * @public
@@ -58,7 +70,7 @@ export const DEFAULT_OUTPUT_FORMAT: DocumentFileType = 'markdown';
  *
  * @returns {string} - The default output folder
  */
-export const DEFAULT_OUTPUT_FOLDER: string = 'tree-maker';
+export const DEFAULT_OUTPUT_FOLDER: string = 'file-tree-maker';
 
 /**
  * DEFAULT_OUTPUT_FILE_NAME: The default output file name.
@@ -119,6 +131,7 @@ export const DEFAULT_OUTPUT_FILE_SEPARATOR: string = '-';
  * @returns {string[]} - The default ignore file path pattern on export
  */
 export const DEFAULT_IGNORE_FILE_PATH_PATTERN_ON_EXPORT: string[] = [
+  '**/node_modules/**',
   '**/build/**',
   '**/dist/**',
   '**/tmp/**',
@@ -160,7 +173,7 @@ export const DISABLE_RECURSIVE_SEARCHING_DEFAULT_VALUE: boolean = false;
  *
  * @returns {number} - The default recursion depth
  */
-export const DEFAULT_RECURSION_DEPTH: number = 5;
+export const DEFAULT_RECURSION_DEPTH: number = 0;
 
 /**
  * DEFAULT_VISIBLE_FILES_SETTING: The default value of the flag to show hidden files.

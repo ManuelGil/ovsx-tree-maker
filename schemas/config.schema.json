@@ -2,52 +2,45 @@
 	"$schema": "http://json-schema.org/draft-07/schema#",
 	"type": "object",
 	"properties": {
-		"treeMaker.files.selectedOutputFormat": {
+		"treeMaker.files.outputFolder": {
 			"type": "string",
-			"default": "markdown",
-			"enum": ["markdown", "json", "xml", "yaml", "csv", "txt"],
-			"enumDescriptions": ["Markdown", "JSON", "XML"],
+			"default": "file-tree-maker",
 			"scope": "resource",
-			"description": "The output format for the tree maker files."
-		},
-		"treeMaker.files.outputPath": {
-			"type": "string",
-			"default": "tree-maker",
-			"scope": "resource",
-			"description": "The output path for the tree maker files."
+			"description": "The output path for the 'Tree Maker' extension files."
 		},
 		"treeMaker.files.outputFileName": {
 			"type": "string",
-			"default": "tree-maker",
+			"default": "file-tree-maker",
 			"scope": "resource",
-			"description": "The output file name for the tree maker files."
+			"description": "The output file name for the 'Tree Maker' extension files."
 		},
 		"treeMaker.files.outputFilePrefix": {
 			"type": "string",
-			"default": "tree-maker",
+			"default": "file-tree-maker",
 			"scope": "resource",
-			"description": "The output file prefix for the tree maker files."
+			"description": "The output file prefix for the 'Tree Maker' extension files."
 		},
 		"treeMaker.files.outputFileSuffix": {
 			"type": "string",
 			"default": "",
 			"scope": "resource",
-			"description": "The output file suffix for the tree maker files."
+			"description": "The output file suffix for the 'Tree Maker' extension files."
 		},
 		"treeMaker.files.outputFileSeparator": {
 			"type": "string",
 			"default": "-",
 			"scope": "resource",
-			"description": "The output file separator for the tree maker files."
+			"description": "The output file separator for the 'Tree Maker' extension files."
 		},
 		"treeMaker.search.ignoreFilePathPatternOnExport": {
 			"type": "array",
 			"default": [
+				"**/node_modules/**",
 				"**/build/**",
 				"**/dist/**",
 				"**/tmp/**",
 				"**/vendor/**",
-				"**/tree-maker/**"
+				"**/file-tree-maker/**"
 			],
 			"scope": "resource",
 			"description": "The ignore file path pattern on export."
@@ -60,11 +53,11 @@
 		},
 		"treeMaker.search.maxSearchRecursionDepth": {
 			"type": "number",
-			"default": 5,
+			"default": 0,
 			"scope": "resource",
 			"description": "The maximum search recursion depth."
 		},
-		"treeMaker.search.shouldListOnlyVisibleFiles": {
+		"treeMaker.search.supportsHiddenFiles": {
 			"type": "boolean",
 			"default": false,
 			"scope": "resource",

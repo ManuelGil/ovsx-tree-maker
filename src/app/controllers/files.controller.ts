@@ -524,13 +524,14 @@ export class FilesController {
     folderPath: string,
   ): Promise<string | undefined> {
     // Get the configuration values
-    const ignoreFilePathPatternOnExport =
-      this.config.ignoreFilePathPatternOnExport;
-    const shouldListOnlyFiles = this.config.shouldListOnlyFiles;
-    const disableRecursiveSearching = this.config.disableRecursiveSearching;
-    const recursionDepth = this.config.maxSearchRecursionDepth;
-    const supportsHiddenFiles = !this.config.shouldListOnlyVisibleFiles;
-    const preserveGitignoreSettings = this.config.keepGitignorePreferences;
+    const {
+      ignoreFilePathPatternOnExport,
+      shouldListOnlyFiles,
+      disableRecursiveSearching,
+      maxSearchRecursionDepth,
+      supportsHiddenFiles,
+      keepGitignorePreferences,
+    } = this.config;
 
     const files = await this.findFiles(
       folderPath,
@@ -538,9 +539,9 @@ export class FilesController {
       ignoreFilePathPatternOnExport,
       shouldListOnlyFiles,
       disableRecursiveSearching,
-      recursionDepth,
+      maxSearchRecursionDepth,
       supportsHiddenFiles,
-      preserveGitignoreSettings,
+      keepGitignorePreferences,
     );
 
     if (files.length === 0) {
@@ -588,13 +589,14 @@ export class FilesController {
     folderPath: string,
   ): Promise<string | undefined> {
     // Get the configuration values
-    const ignoreFilePathPatternOnExport =
-      this.config.ignoreFilePathPatternOnExport;
-    const shouldListOnlyFiles = this.config.shouldListOnlyFiles;
-    const disableRecursiveSearching = this.config.disableRecursiveSearching;
-    const recursionDepth = this.config.maxSearchRecursionDepth;
-    const supportsHiddenFiles = !this.config.shouldListOnlyVisibleFiles;
-    const preserveGitignoreSettings = this.config.keepGitignorePreferences;
+    const {
+      ignoreFilePathPatternOnExport,
+      shouldListOnlyFiles,
+      disableRecursiveSearching,
+      maxSearchRecursionDepth,
+      supportsHiddenFiles,
+      keepGitignorePreferences,
+    } = this.config;
 
     const files = await this.findFiles(
       folderPath,
@@ -602,9 +604,9 @@ export class FilesController {
       ignoreFilePathPatternOnExport,
       shouldListOnlyFiles,
       disableRecursiveSearching,
-      recursionDepth,
+      maxSearchRecursionDepth,
       supportsHiddenFiles,
-      preserveGitignoreSettings,
+      keepGitignorePreferences,
     );
 
     // If no files are found, return
@@ -658,13 +660,14 @@ export class FilesController {
     folderPath: string,
   ): Promise<string | undefined> {
     // Get the configuration values
-    const ignoreFilePathPatternOnExport =
-      this.config.ignoreFilePathPatternOnExport;
-    const shouldListOnlyFiles = this.config.shouldListOnlyFiles;
-    const disableRecursiveSearching = this.config.disableRecursiveSearching;
-    const recursionDepth = this.config.maxSearchRecursionDepth;
-    const supportsHiddenFiles = !this.config.shouldListOnlyVisibleFiles;
-    const preserveGitignoreSettings = this.config.keepGitignorePreferences;
+    const {
+      ignoreFilePathPatternOnExport,
+      shouldListOnlyFiles,
+      disableRecursiveSearching,
+      maxSearchRecursionDepth,
+      supportsHiddenFiles,
+      keepGitignorePreferences,
+    } = this.config;
 
     const files = await this.findFiles(
       folderPath,
@@ -672,9 +675,9 @@ export class FilesController {
       ignoreFilePathPatternOnExport,
       shouldListOnlyFiles,
       disableRecursiveSearching,
-      recursionDepth,
+      maxSearchRecursionDepth,
       supportsHiddenFiles,
-      preserveGitignoreSettings,
+      keepGitignorePreferences,
     );
 
     // If no files are found, return
@@ -720,13 +723,14 @@ export class FilesController {
     folderPath: string,
   ): Promise<string | undefined> {
     // Get the configuration values
-    const ignoreFilePathPatternOnExport =
-      this.config.ignoreFilePathPatternOnExport;
-    const shouldListOnlyFiles = this.config.shouldListOnlyFiles;
-    const disableRecursiveSearching = this.config.disableRecursiveSearching;
-    const recursionDepth = this.config.maxSearchRecursionDepth;
-    const supportsHiddenFiles = !this.config.shouldListOnlyVisibleFiles;
-    const preserveGitignoreSettings = this.config.keepGitignorePreferences;
+    const {
+      ignoreFilePathPatternOnExport,
+      shouldListOnlyFiles,
+      disableRecursiveSearching,
+      maxSearchRecursionDepth,
+      supportsHiddenFiles,
+      keepGitignorePreferences,
+    } = this.config;
 
     const files = await this.findFiles(
       folderPath,
@@ -734,9 +738,9 @@ export class FilesController {
       ignoreFilePathPatternOnExport,
       shouldListOnlyFiles,
       disableRecursiveSearching,
-      recursionDepth,
+      maxSearchRecursionDepth,
       supportsHiddenFiles,
-      preserveGitignoreSettings,
+      keepGitignorePreferences,
     );
 
     // If no files are found, return
@@ -779,13 +783,14 @@ export class FilesController {
     folderPath: string,
   ): Promise<string | undefined> {
     // Get the configuration values
-    const ignoreFilePathPatternOnExport =
-      this.config.ignoreFilePathPatternOnExport;
-    const shouldListOnlyFiles = this.config.shouldListOnlyFiles;
-    const disableRecursiveSearching = this.config.disableRecursiveSearching;
-    const recursionDepth = this.config.maxSearchRecursionDepth;
-    const supportsHiddenFiles = !this.config.shouldListOnlyVisibleFiles;
-    const preserveGitignoreSettings = this.config.keepGitignorePreferences;
+    const {
+      ignoreFilePathPatternOnExport,
+      shouldListOnlyFiles,
+      disableRecursiveSearching,
+      maxSearchRecursionDepth,
+      supportsHiddenFiles,
+      keepGitignorePreferences,
+    } = this.config;
 
     const files = await this.findFiles(
       folderPath,
@@ -793,9 +798,9 @@ export class FilesController {
       ignoreFilePathPatternOnExport,
       shouldListOnlyFiles,
       disableRecursiveSearching,
-      recursionDepth,
+      maxSearchRecursionDepth,
       supportsHiddenFiles,
-      preserveGitignoreSettings,
+      keepGitignorePreferences,
     );
 
     // If no files are found, return
@@ -838,13 +843,14 @@ export class FilesController {
     folderPath: string,
   ): Promise<string | undefined> {
     // Get the configuration values
-    const ignoreFilePathPatternOnExport =
-      this.config.ignoreFilePathPatternOnExport;
-    const shouldListOnlyFiles = this.config.shouldListOnlyFiles;
-    const disableRecursiveSearching = this.config.disableRecursiveSearching;
-    const recursionDepth = this.config.maxSearchRecursionDepth;
-    const supportsHiddenFiles = !this.config.shouldListOnlyVisibleFiles;
-    const preserveGitignoreSettings = this.config.keepGitignorePreferences;
+    const {
+      ignoreFilePathPatternOnExport,
+      shouldListOnlyFiles,
+      disableRecursiveSearching,
+      maxSearchRecursionDepth,
+      supportsHiddenFiles,
+      keepGitignorePreferences,
+    } = this.config;
 
     const files = await this.findFiles(
       folderPath,
@@ -852,9 +858,9 @@ export class FilesController {
       ignoreFilePathPatternOnExport,
       shouldListOnlyFiles,
       disableRecursiveSearching,
-      recursionDepth,
+      maxSearchRecursionDepth,
       supportsHiddenFiles,
-      preserveGitignoreSettings,
+      keepGitignorePreferences,
     );
 
     // If no files are found, return
@@ -979,7 +985,7 @@ export class FilesController {
       absolute: true,
       onlyFiles: includeOnlyFiles,
       dot: includeDotfiles,
-      deep: disableRecursive ? 1 : deep,
+      deep: disableRecursive ? 1 : deep === 0 ? undefined : deep,
       ignore: exclude,
     };
 

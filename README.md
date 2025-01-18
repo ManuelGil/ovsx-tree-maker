@@ -32,7 +32,7 @@ Get started with Tree Maker today and take your project organization to the next
 
 ## Requirements
 
-- VSCode 1.76.0 or later
+- VSCode 1.88.0 or later
 
 ## Features
 
@@ -64,8 +64,8 @@ Configure your project by creating or updating a settings.json file at the proje
       "treeMaker.files.outputFileSeparator": "_", // Output file separator
       "treeMaker.search.ignoreFilePathPatternOnExport": ["**/dist/**", "**/tree-maker/**"], // Ignore file path patterns
       "treeMaker.search.shouldListOnlyFiles": false, // List only files
-      "treeMaker.search.maxSearchRecursionDepth": 5, // Maximum search recursion depth
-      "treeMaker.search.shouldListOnlyVisibleFiles": true, // List only visible files
+      "treeMaker.search.maxSearchRecursionDepth": 0, // Maximum search recursion depth. 0 for unlimited
+      "treeMaker.search.supportsHiddenFiles": true, // Supports hidden files
       "treeMaker.search.keepGitignorePreferences": false, // Keep .gitignore preferences
     }
     ```
@@ -86,8 +86,8 @@ Configure Tree Maker settings in your `.vscode/settings.json` file to tailor the
 - **`treeMaker.files.outputFileSeparator`**: The separator used to join the prefix, name, and suffix of the output file.
 - **`treeMaker.search.ignoreFilePathPatternOnExport`**: An array of file path patterns to ignore when exporting the tree file.
 - **`treeMaker.search.shouldListOnlyFiles`**: A boolean value indicating whether to list only files in the tree structure.
-- **`treeMaker.search.maxSearchRecursionDepth`**: The maximum search recursion depth when generating the tree structure.
-- **`treeMaker.search.shouldListOnlyVisibleFiles`**: A boolean value indicating whether to list only visible files in the tree structure.
+- **`treeMaker.search.maxSearchRecursionDepth`**: The maximum search recursion depth when generating the tree structure. Use `0` for unlimited depth.
+- **`treeMaker.search.supportsHiddenFiles`**: A boolean value indicating whether to support hidden files when generating the tree structure.
 - **`treeMaker.search.keepGitignorePreferences`**: A boolean value indicating whether to keep the `.gitignore` preferences when generating the tree structure.
 
 For more information on configuring Tree Maker settings, refer to the [Project Settings](#project-settings) section.

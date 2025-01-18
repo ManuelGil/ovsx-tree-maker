@@ -7,6 +7,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.2.0] - 2025-01-17
+
+### Added
+
+- Add VS Code test configuration and update test scripts
+
+### Changed
+
+- Improve the welcome and update messages in the extension
+- Upgrade dependencies to the latest versions available
+
 ## [1.1.2] - 2021-12-17
 
 ### Fixed
@@ -39,7 +50,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Initial release of Tree Maker extension.
 
-[Unreleased]: https://github.com/ManuelGil/ovsx-tree-maker/compare/v1.1.2...HEAD
+[Unreleased]: https://github.com/ManuelGil/ovsx-tree-maker/compare/v1.2.0...HEAD
+[1.2.0]: https://github.com/ManuelGil/ovsx-tree-maker/compare/v1.1.2...v1.2.0
 [1.1.2]: https://github.com/ManuelGil/ovsx-tree-maker/compare/v1.1.1...v1.1.2
 [1.1.1]: https://github.com/ManuelGil/ovsx-tree-maker/compare/v1.1.0...v1.1.1
 [1.1.0]: https://github.com/ManuelGil/ovsx-tree-maker/compare/v1.0.1...v1.1.0

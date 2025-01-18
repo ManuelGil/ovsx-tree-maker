@@ -144,7 +144,7 @@ export class ExtensionConfig {
    * @example
    * console.log(config.supportsHiddenFiles);
    */
-  shouldListOnlyVisibleFiles: boolean;
+  supportsHiddenFiles: boolean;
 
   /**
    * The flag to preserve gitignore settings.
@@ -169,40 +169,116 @@ export class ExtensionConfig {
    * @memberof Config
    */
   constructor(readonly config: WorkspaceConfiguration) {
-    this.selectedOutputFormat =
-      this.config.get<DocumentFileType>('files.selectedOutputFormat') ??
-      DEFAULT_OUTPUT_FORMAT;
-    this.outputFolder =
-      this.config.get<string>('files.outputFolder') ?? DEFAULT_OUTPUT_FOLDER;
-    this.outputFileName =
-      this.config.get<string>('files.outputFileName') ??
-      DEFAULT_OUTPUT_FILE_NAME;
-    this.outputFilePrefix =
-      this.config.get<string>('files.outputFilePrefix') ??
-      DEFAULT_OUTPUT_FILE_PREFIX;
-    this.outputFileSuffix =
-      this.config.get<string>('files.outputFileSuffix') ??
-      DEFAULT_OUTPUT_FILE_SUFFIX;
-    this.outputFileSeparator =
-      this.config.get<string>('files.outputFileSeparator') ??
-      DEFAULT_OUTPUT_FILE_SEPARATOR;
-    this.ignoreFilePathPatternOnExport =
-      this.config.get<string[]>('search.ignoreFilePathPatternOnExport') ??
-      DEFAULT_IGNORE_FILE_PATH_PATTERN_ON_EXPORT;
-    this.shouldListOnlyFiles =
-      this.config.get<boolean>('search.shouldListOnlyFiles') ??
-      ONLY_FILES_DEFAULT_VALUE;
-    this.disableRecursiveSearching =
-      this.config.get<boolean>('search.disableRecursiveSearching') ??
-      DISABLE_RECURSIVE_SEARCHING_DEFAULT_VALUE;
-    this.maxSearchRecursionDepth =
-      this.config.get<number>('search.maxSearchRecursionDepth') ??
-      DEFAULT_RECURSION_DEPTH;
-    this.shouldListOnlyVisibleFiles =
-      this.config.get<boolean>('search.shouldListOnlyVisibleFiles') ??
-      DEFAULT_VISIBLE_FILES_SETTING;
-    this.keepGitignorePreferences =
-      this.config.get<boolean>('search.keepGitignorePreferences') ??
-      DEFAULT_KEEP_GITIGNORE_SETTINGS;
+    this.selectedOutputFormat = this.config.get<DocumentFileType>(
+      'files.selectedOutputFormat',
+      DEFAULT_OUTPUT_FORMAT,
+    );
+    this.outputFolder = this.config.get<string>(
+      'files.outputFolder',
+      DEFAULT_OUTPUT_FOLDER,
+    );
+    this.outputFileName = this.config.get<string>(
+      'files.outputFileName',
+      DEFAULT_OUTPUT_FILE_NAME,
+    );
+    this.outputFilePrefix = this.config.get<string>(
+      'files.outputFilePrefix',
+      DEFAULT_OUTPUT_FILE_PREFIX,
+    );
+    this.outputFileSuffix = this.config.get<string>(
+      'files.outputFileSuffix',
+      DEFAULT_OUTPUT_FILE_SUFFIX,
+    );
+    this.outputFileSeparator = this.config.get<string>(
+      'files.outputFileSeparator',
+      DEFAULT_OUTPUT_FILE_SEPARATOR,
+    );
+    this.ignoreFilePathPatternOnExport = this.config.get<string[]>(
+      'search.ignoreFilePathPatternOnExport',
+      DEFAULT_IGNORE_FILE_PATH_PATTERN_ON_EXPORT,
+    );
+    this.shouldListOnlyFiles = this.config.get<boolean>(
+      'search.shouldListOnlyFiles',
+      ONLY_FILES_DEFAULT_VALUE,
+    );
+    this.disableRecursiveSearching = this.config.get<boolean>(
+      'search.disableRecursiveSearching',
+      DISABLE_RECURSIVE_SEARCHING_DEFAULT_VALUE,
+    );
+    this.maxSearchRecursionDepth = this.config.get<number>(
+      'search.maxSearchRecursionDepth',
+      DEFAULT_RECURSION_DEPTH,
+    );
+    this.supportsHiddenFiles = this.config.get<boolean>(
+      'search.supportsHiddenFiles',
+      DEFAULT_VISIBLE_FILES_SETTING,
+    );
+    this.keepGitignorePreferences = this.config.get<boolean>(
+      'search.keepGitignorePreferences',
+      DEFAULT_KEEP_GITIGNORE_SETTINGS,
+    );
+  }
+
+  // -----------------------------------------------------------------
+  // Methods
+  // -----------------------------------------------------------------
+
+  // Public methods
+  /**
+   * The update method.
+   *
+   * @function update
+   * @param {WorkspaceConfiguration} config - The workspace configuration
+   * @public
+   * @memberof Config
+   * @example
+   * const config = new Config(workspace.getConfiguration());
+   * config.update(workspace.getConfiguration());
+   */
+  update(config: WorkspaceConfiguration): void {
+    this.outputFolder = config.get<string>(
+      'files.outputFolder',
+      DEFAULT_OUTPUT_FOLDER,
+    );
+    this.outputFileName = config.get<string>(
+      'files.outputFileName',
+      DEFAULT_OUTPUT_FILE_NAME,
+    );
+    this.outputFilePrefix = config.get<string>(
+      'files.outputFilePrefix',
+      DEFAULT_OUTPUT_FILE_PREFIX,
+    );
+    this.outputFileSuffix = config.get<string>(
+      'files.outputFileSuffix',
+      DEFAULT_OUTPUT_FILE_SUFFIX,
+    );
+    this.outputFileSeparator = config.get<string>(
+      'files.outputFileSeparator',
+      DEFAULT_OUTPUT_FILE_SEPARATOR,
+    );
+    this.ignoreFilePathPatternOnExport = config.get<string[]>(
+      'search.ignoreFilePathPatternOnExport',
+      DEFAULT_IGNORE_FILE_PATH_PATTERN_ON_EXPORT,
+    );
+    this.shouldListOnlyFiles = config.get<boolean>(
+      'search.shouldListOnlyFiles',
+      ONLY_FILES_DEFAULT_VALUE,
+    );
+    this.disableRecursiveSearching = config.get<boolean>(
+      'search.disableRecursiveSearching',
+      DISABLE_RECURSIVE_SEARCHING_DEFAULT_VALUE,
+    );
+    this.maxSearchRecursionDepth = config.get<number>(
+      'search.maxSearchRecursionDepth',
+      DEFAULT_RECURSION_DEPTH,
+    );
+    this.supportsHiddenFiles = config.get<boolean>(
+      'search.supportsHiddenFiles',
+      DEFAULT_VISIBLE_FILES_SETTING,
+    );
+    this.keepGitignorePreferences = config.get<boolean>(
+      'search.keepGitignorePreferences',
+      DEFAULT_KEEP_GITIGNORE_SETTINGS,
+    );
   }
 }
