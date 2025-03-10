@@ -7,6 +7,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.3.0] - 2025-03-09
+
+### Added
+
+- Add `vscode-marketplace-client` dependency to check for extension updates and display a notification
+
+### Changed
+
+- Improve localization strings for the extension
+
 ## [1.2.0] - 2025-01-17
 
 ### Added
@@ -18,25 +28,25 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Improve the welcome and update messages in the extension
 - Upgrade dependencies to the latest versions available
 
-## [1.1.2] - 2021-12-17
+## [1.1.2] - 2024-12-17
 
 ### Fixed
 
 - Fix issue with `FilesController` not exporting the correct markdown format.
 
-## [1.1.1] - 2021-12-10
+## [1.1.1] - 2024-12-10
 
 ### Changed
 
 - Update Markdown formatting in `FilesController` to improve readability.
 
-## [1.1.0] - 2021-12-07
+## [1.1.0] - 2024-12-07
 
 ### Added
 
 - Add export to clipboard functionality in `FilesController`
 
-## [1.0.1] - 2021-12-02
+## [1.0.1] - 2024-12-02
 
 ### Changed
 
@@ -44,13 +54,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Update package.json file.
 - Update icon.
 
-## [1.0.0] - 2021-12-01
+## [1.0.0] - 2024-12-01
 
 ### Added
 
 - Initial release of Tree Maker extension.
 
-[Unreleased]: https://github.com/ManuelGil/ovsx-tree-maker/compare/v1.2.0...HEAD
+[Unreleased]: https://github.com/ManuelGil/ovsx-tree-maker/compare/v1.3.0...HEAD
+[1.3.0]: https://github.com/ManuelGil/ovsx-tree-maker/compare/v1.2.0...v1.3.0
 [1.2.0]: https://github.com/ManuelGil/ovsx-tree-maker/compare/v1.1.2...v1.2.0
 [1.1.2]: https://github.com/ManuelGil/ovsx-tree-maker/compare/v1.1.1...v1.1.2
 [1.1.1]: https://github.com/ManuelGil/ovsx-tree-maker/compare/v1.1.0...v1.1.1
